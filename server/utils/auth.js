@@ -10,8 +10,8 @@ module.exports = {
   },
   authMiddleware: function ({ req }) {
     if (
-      req.body?.operationName === 'login' ||
-      req.body?.operationName === 'addUser'
+      req.body.operationName === 'login' ||
+      req.body.operationName === 'addUser'
     ) {
       return req
     }
@@ -33,10 +33,9 @@ module.exports = {
     }
     try {
       // decode and attach user data to request object
-      console.log(jwt.verify(token, secret, { maxAge: expiration }))
       const { data } = jwt.verify(token, secret, { maxAge: expiration })
       req.user = data
-    } catch(err){
+    } catch (err) {
       console.log('Invalid token:', err)
     }
     // return updated request object
