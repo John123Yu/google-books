@@ -64,6 +64,7 @@ const SearchBooks = () => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
     try {
+      console.log("bookToSave", bookToSave)
       await saveBook({
         variables: { id: user._id, book: bookToSave }
       })
